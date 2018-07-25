@@ -164,3 +164,318 @@ Specification :
   </ul>
 </pre>
 
+<hr/>
+# Solution
+# PizzaStore.java
+<pre>
+import java.util.Scanner;
+
+public class PizzaStore {
+	private Pizza[] pizzas = new Pizza[30];
+	private static int tokenNo = 0;
+
+	public void add(Pizza pizza) throws Exception {
+		if (tokenNo < pizzas.length) {
+			this.pizzas[tokenNo] = pizza;
+			tokenNo++;
+		} else {
+			throw new Exception("Closed For Today !!!");
+		}
+
+	}
+
+	public void printOrders() {
+		if (tokenNo == 0) {
+			System.out.println("No orders till now");
+			return;
+		} else {
+			System.out.println("-->tokenNo:" + tokenNo);
+			for (int i = 0; i < tokenNo; i++) {
+				System.out.println("Pizza Type : " + pizzas[i].getType());
+				System.out.println("Pizza Size : " + pizzas[i].getSize());
+				System.out.println("Pizza BreadBase : " + pizzas[i].getBreadBase());
+				System.out.println("**Pizz Topping selecteed are*****");
+				for (String topping : pizzas[i].getToppings()) {
+					System.out.println(topping);
+				}
+				System.out.println("Bill Calucuated is :" + pizzas[i].calculatePrice());
+			}
+		}
+
+	}
+
+	private static void printSizes() {
+		System.out.println("1.Small");
+		System.out.println("2.Medium");
+		System.out.println("3.Large");
+	}
+
+	private static String chooseSize() throws Exception {
+		System.out.print("Enter size : ");
+		int choice = new Scanner(System.in).nextInt();
+		String size = null;
+		if (choice == 1) {
+			size = "Small";
+		} else if (choice == 2) {
+			size = "Medium";
+		} else if (choice == 2) {
+			size = "Large";
+		} else {
+			throw new Exception("Invalid Size !!!");
+		}
+		return size;
+	}
+
+	private static void printTypes() {
+		System.out.println("1. Veg");
+		System.out.println("2. Non-Veg");
+	}
+
+	private static String chooseType() throws Exception {
+		System.out.print("Enter  Type : ");
+		int choice = new Scanner(System.in).nextInt();
+		String type = null;
+		if (choice == 1) {
+			type = "Veg";
+		} else if (choice == 2) {
+			type = "Non-Veg";
+		} else {
+			throw new Exception("Invalid Type !!!");
+		}
+		return type;
+
+	}
+
+	private static void printToppings() {
+		System.out.println("1. Extra Cheese ");
+		System.out.println("2. Olives ");
+	}
+
+	private static String chooseTopping() throws Exception {
+		System.out.print("Enter Toppings : ");
+		int choice = new Scanner(System.in).nextInt();
+		String toppings = null;
+		if (choice == 1) {
+			toppings = "Extra Cheese";
+		} else if (choice == 2) {
+			toppings = "Olives";
+		} else {
+			throw new Exception("Invalid Topping !!!");
+		}
+		return toppings;
+	}
+
+	private static void printBreadBases() {
+		System.out.println("1. Pan ");
+		System.out.println("2. Thin Crust ");
+	}
+
+	private static String chooseBreadBase() throws Exception {
+		System.out.print("Enter bread base : ");
+		int Choice = new Scanner(System.in).nextInt();
+		String breadBase = null;
+		if (Choice == 1) {
+			breadBase = "Pan";
+		} else if (Choice == 2) {
+			breadBase = "Thin-Crust";
+		} else {
+			throw new Exception("Invalid breadBase !!!");
+		}
+		return breadBase;
+	}
+
+	public static void main(String[] args) throws Exception {
+
+		Scanner scanner = new Scanner(System.in);
+		PizzaStore pizzaStore = new PizzaStore();
+
+		do {
+			System.out.println("1. Order Pizza ");
+			System.out.println("2. List Orders ");
+			System.out.println("3. For Exit");
+			System.out.print("Enter Choice : ");
+			int choice = scanner.nextInt();
+			switch (choice) {
+			case 1:
+				printSizes();
+				String size = chooseSize();
+				printTypes();
+				String type = chooseType();
+				printToppings();
+				String[] toppings = new String[2];
+				toppings[0] = chooseTopping();
+				toppings[1] = chooseTopping();
+				printBreadBases();
+				String breadBase = chooseBreadBase();
+				Pizza pizza = new Pizza(size, type, breadBase, toppings);
+				pizzaStore.add(pizza);
+				break;
+
+			case 2:
+				pizzaStore.printOrders();
+				break;
+			case 3:
+				System.exit(1);
+			default:
+				System.out.println("Invalid choice...");
+				break;
+			}
+
+		} while (true);
+
+	}
+
+}
+//---------------------------------------------------------------PizzaStore.java-------------------------
+
+//------------------------------------------------------------------Pizza.java--------------------------
+
+
+</pre>
+
+# Pizza.java
+<pre>
+public class Pizza {
+	private String size;
+	private String type;
+	private String breadBase;
+	private String[] toppings;
+
+	public Pizza() {
+
+	}
+
+	public Pizza(String size, String type, String breadBase, String[] toppings) throws Exception {
+
+		if (!isValidSize(size)) {
+			throw new Exception("Invlaid Size : Pizza is available in small, medium and large !!!");
+		}
+		if (!isValidType(type)) {
+			throw new Exception("Invlaid type : We sell only Veg and Non-veg Pizza !!!");
+		}
+		if (!isValidBreadBase(breadBase)) {
+			throw new Exception("Invlaid Bread Base : We make only Thin Crust and Pan !!!");
+		}
+		if (!areValidToppings(toppings)) {
+			throw new Exception("Invlaid Toppings : One of the toppings selected is not availble !!!");
+		}
+		this.size = size;
+		this.type = type;
+
+		this.breadBase = breadBase;
+		this.toppings = toppings;
+	}
+
+	public boolean isValidSize(String size) {
+		return size.equalsIgnoreCase("small") || size.equalsIgnoreCase("medium") || size.equalsIgnoreCase("large");
+	}
+
+	public boolean isValidType(String type) {
+
+		return type.equalsIgnoreCase("Veg") || type.equalsIgnoreCase("Non-Veg");
+	}
+
+	public boolean isValidBreadBase(String breadBase) {
+		return breadBase.equalsIgnoreCase("Thin-Crust") || breadBase.equalsIgnoreCase("Pan");
+	}
+
+	public boolean areValidToppings(String[] toppings) {
+
+		for (int i = 0; i < toppings.length; i++) {
+			if (!toppings[i].equalsIgnoreCase("Extra Cheese") && !toppings[i].equalsIgnoreCase("Olives")) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) throws Exception {
+		if (isValidSize(size)) {
+			this.size = size;
+		}
+
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) throws Exception {
+		if (isValidType(type)) {
+			this.type = type;
+		}
+
+	}
+
+	public String getBreadBase() {
+		return breadBase;
+	}
+
+	public void setBreadBase(String breadBase) throws Exception {
+		if (isValidBreadBase(breadBase)) {
+			this.breadBase = breadBase;
+		}
+
+	}
+
+	public String[] getToppings() {
+		return toppings;
+	}
+
+	public void setToppings(String[] toppings) throws Exception {
+		if (!areValidToppings(toppings)) {
+			throw new Exception("Invlaid Toppings : One of the toppings selected is not availble !!!");
+		}
+		this.toppings = toppings;
+
+	}
+
+	public double calculatePrice() {
+		 
+		double price = 0.0;
+
+		if (size.equalsIgnoreCase("small")) {
+			price += 100.0;
+		}
+		if (size.equalsIgnoreCase("medium")) {
+			price += 250.0;
+		}
+		if (size.equalsIgnoreCase("large")) {
+			price += 450.0;
+		}
+
+		if (type.equalsIgnoreCase("Non-Veg")) {
+			price += 100.0;
+		}
+		if (type.equalsIgnoreCase("Veg")) {
+			price += 50.0;
+		}
+		if (breadBase.equals("Thin Crust")) {
+			price += 75.00;
+		}
+		if (breadBase.equals("Pan")) {
+			price += 55.00;
+		}
+
+		for (int i = 0; i < toppings.length; i++) {
+			if (toppings[i].equalsIgnoreCase("Extra Cheese")) {
+				price += 90.0;
+			}
+			if (toppings[i].equalsIgnoreCase("Olives")) {
+				price += 40.0;
+			}
+		}
+		
+		return price;
+
+	}
+}
+
+	
+
+
+</pre>
