@@ -45,8 +45,8 @@
      Argument         : No   // at method throws Exception
      Return Type      : String
      Purpose          : Asked user to enter the size of Pizza and select it in the form of string and return it otherwise return execption with "invalid size!!" message.
-    
-    <li>Print Types</li>
+   
+   <li>Print Types</li>
      Name of Method : printTypes
      Argument       : No
      Return Type    : void
@@ -59,7 +59,7 @@
      Purpose         : Asked user to enter the type of pizza and select it in the form of string and return it.
                        Otherwise return Exception with "Invalid type!!" message.
     
-    <li>Print Toppings</li>
+   <li>Print Toppings</li>
      Name of Method : printToppings
      Argument       : No
      Return Type    : void
@@ -73,8 +73,7 @@
                        Otherwise return Exception with "Invalid Toppings!!" message.
     
      
-     
-    <li>Print BreadBases</li>
+   <li>Print BreadBases</li>
      Name of Method : printBreadBases
      Argument       : No
      Return Type    : void
