@@ -479,3 +479,49 @@ public class Pizza {
 
 
 </pre>
+<hr/>
+# Output:
+
+<pre>
+   1. Order Pizza 
+2. List Orders 
+3. For Exit
+Enter Choice : 
+1
+1.Small
+2.Medium
+3.Large
+Enter size : 
+1
+1. Veg
+2. Non-Veg
+Enter  Type : 
+1
+1. Extra Cheese 
+2. Olives 
+Enter Toppings : 
+1
+Enter Toppings : 
+1
+1. Pan 
+2. Thin Crust 
+Enter bread base : 
+1
+1. Order Pizza 
+2. List Orders 
+3. For Exit
+Enter Choice : 2
+-->tokenNo:1
+Pizza Type : Veg
+Pizza Size : Small
+Pizza BreadBase : Pan
+**Pizz Topping selecteed are*****
+Extra Cheese
+Extra Cheese
+Bill Calucuated is :385.0
+1. Order Pizza 
+2. List Orders 
+3. For Exit
+Enter Choice : 3
+
+</pre>
