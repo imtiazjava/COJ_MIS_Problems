@@ -163,10 +163,11 @@ Specification :
   </ul>
   </ul>
 </pre>
-
 <hr/>
+
 # Solution
 # PizzaStore.java
+
 <pre>
 import java.util.Scanner;
 
