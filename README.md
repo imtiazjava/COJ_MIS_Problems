@@ -481,8 +481,7 @@ public class Pizza {
 
 </pre>
 <hr/>
-# Output:
-
+# Output
 <pre>
    1. Order Pizza 
 2. List Orders 
