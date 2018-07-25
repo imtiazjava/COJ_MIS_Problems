@@ -7,7 +7,6 @@
 <h4>Specification</h4>
 <pre>
 <ol>
-
 <li>The following are the data members of pizza store</li>
 <ul>
   <li>Define the pizza array of int:SIZE=30</li>
@@ -106,13 +105,63 @@
 <li>The following are Constructor</li>
 Arugments     : Four arguments(String size,String type,String breadBase,String[] toppings) throws Exception.
 Specification : 
-               *  if !isValidSize(size)  then
-<li>The following are the methods specification:</li>
+               *  If !isValidSize(size)  then throw new Exception with message "Invalid Size: Pizza is available in Small,Medium,Large"
+               *  If !isValidType(type) then throw new Exception with message "Invalid Type : We sell only Veg and Non-Veg Pizza".
+               *  If !isValidBreadBase(breadBase) then throw new Exception with message "Invalid Bread Base: We make only Pan and Thin-Crust".
+               * If !areValidToppings(toppings) then throw new Exception with message "Invalid Toppings: One of toppings selected is not available".
+               * otherwise initialize the size,type,breadBase,and topping to instance var.
+               
+ <li>The following are the methods </li>
   <ul>
-    <li></li>
-    
-    
+  <li>Validsize</li>
+  Name of Method : isValidSize
+  Arguments      : One of type String 
+  Return Type    : boolean
+  Purpose        : * If size is equal to small or medium or large return true otherwise return false.
   
+  <li>ValidType</li>
+  Name of Method : isValidType
+  Arguments      : One of type String 
+  Return Type    : boolean
+  Purpose        : * If type is equal to veg or non-veg return true otherwise return false.
+  
+  
+  <li>ValidBreadBase</li>
+  Name of Method : isValidBreadBase
+  Arguments      : One of type String 
+  Return Type    : boolean
+  Purpose        : * If type is equal to Thin-Crust or Pan return true otherwise return false.
+  
+  
+  <li>ValidToppings</li>
+  Name of Method : areValidToppings
+  Arguments      : One of type array String[] 
+  Return Type    : boolean
+  Purpose        : * If type is not equal to Extra Cheese and Olive return false otherwise return true.
+  
+ <li>Setter and getter for Instance variables</li>
+
+<li> Caluclate Price</li>
+  Name of Method : calculatePrice
+  Arguments      : No 
+  Return Type    : double
+  Specification  : * If size is equal to "small" then price  = price + 100.00;
+                   * If size is equal to "medium" then price = price +250.00;
+                   * If size is equal to "large" then  price = price +450.00;
+                   * If type is equal to Veg then price = price+50.00;
+                   * If type is equal to Non-Veg then price = price+100.00;
+                   * If type is equal to Thin-Crust then price = price+75.00;
+                   * If type is equal to Pan then price = price+55.00;
+                   * If toppings is equal to Extra Cheese then price = price + 90.00 
+                      otherwise if toppings is equal to Olives then price = price+40.00;
+                   * Then final return price.
+                 
+                   
+  
+
+
+  
+  </ul>
   </ul>
 </pre>
 
